@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void successOrFail(boolean isSuccess, String response) {
                 if (isSuccess){
-                    Log.i(TAG, "successOrFail: " + response);
                     try {
                         JSONObject responseJSON = new JSONObject(response);
                         JSONObject feedJSON = responseJSON.getJSONObject("feed");

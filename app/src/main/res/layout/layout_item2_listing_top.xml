@@ -14,13 +14,13 @@
             android:layout_height="match_parent"
             android:id="@+id/topNumbTxt"
             android:gravity="center"
-            android:layout_width="40dp"
+            android:layout_width="35dp"
             android:layout_margin="0dp"
             android:textSize="20sp" />
 
         <ImageView
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:id="@+id/topImg"
             android:layout_margin="10dp" />
 
@@ -40,7 +40,7 @@
                 android:layout_marginRight="10dp"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="#4d4d4d" />
 
             <TextView
@@ -49,7 +49,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/topTypeTxt"
                 android:layout_marginBottom="5dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -96,7 +97,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/ratingNumbTxt"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

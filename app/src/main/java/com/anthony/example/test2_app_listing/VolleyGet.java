@@ -32,7 +32,6 @@ public class VolleyGet {
 
     public static StringRequest appRatingRequest(String appId, final ResultListener resultListener){
         String url = "https://itunes.apple.com/hk/lookup?id=" + appId + "&lang=zh";
-        Log.i(TAG, "appRatingRequest: " + url);
         StringRequest jsonObjRequest = new StringRequest(Request.Method.GET,
                 url,
                 new Response.Listener<String>() {
@@ -53,6 +52,4 @@ public class VolleyGet {
     public interface ResultListener{
         public void successOrFail(boolean isSuccess, String response);
     }
-
-    //https://itunes.apple.com/hk/lookup?id=1178491878&lang=zh
 }

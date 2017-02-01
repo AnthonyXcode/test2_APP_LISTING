@@ -31,6 +31,7 @@ public class ListingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private String TAG = "ListingAdapter";
     private ImageUtility imageUtility;
     private Context context;
+    private int itemCount;
 
     public ListingAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
@@ -58,41 +59,59 @@ public class ListingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if (holder instanceof GrossingHolder){
             setupGrossingLayout((GrossingHolder) holder);
         }else if (holder instanceof Top100Holder){
-            setupTop100Layout((Top100Holder) holder,position - 1);
+            int itemPosition;
+            if (grossing10Items.size() == 0){
+                itemPosition = position;
+            }else {
+                itemPosition = position - 1;
+            }
+            setupTop100Layout((Top100Holder) holder,itemPosition);
         }
     }
 
     @Override
     public int getItemCount() {
-        return top100Items.size() + 1;
+        return setItemCountm();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0){
-            return TYPE_GROSSING;
-        }else {
+        if (grossing10Items.size() == 0){
             return TYPE_TOP;
+        }else {
+            if (position == 0) {
+                return TYPE_GROSSING;
+            } else {
+                return TYPE_TOP;
+            }
         }
+    }
+
+    private int setItemCountm(){
+        if (grossing10Items.size() == 0){
+            itemCount = top100Items.size();
+        }else {
+            itemCount = top100Items.size() + 1;
+        }
+        return itemCount;
     }
 
     GrossingAdaper grossingAdapter;
     LinearLayoutManager layoutManager;
     boolean grossingInitialized = false;
     private void setupGrossingLayout(GrossingHolder holder){
-        Log.i(TAG, "setupGrossingLayout: " + grossing10Items.size());
         if (grossing10Items.size() != 0) {
             if (!grossingInitialized) {
                 grossingInitialized = true;
                 if (grossingAdapter == null) grossingAdapter = new GrossingAdaper(context, grossing10Items);
                 if (layoutManager == null) layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-                holder.grossingContainerRL.setVisibility(View.VISIBLE);
+                holder.container.setVisibility(View.VISIBLE);
                 holder.grossingRecylerView.setLayoutManager(layoutManager);
                 holder.grossingRecylerView.setAdapter(grossingAdapter);
             }
         }else {
             grossingInitialized = false;
-            holder.grossingContainerRL.setVisibility(View.GONE);
+            holder.container.setVisibility(View.GONE);
         }
     }
 
@@ -171,11 +190,11 @@ public class ListingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private class GrossingHolder extends RecyclerView.ViewHolder{
         private RecyclerView grossingRecylerView;
-        private RelativeLayout grossingContainerRL;
+        View container;
         public GrossingHolder(View itemView) {
             super(itemView);
             grossingRecylerView = (RecyclerView)itemView.findViewById(R.id.grossingRecylerView);
-            grossingContainerRL = (RelativeLayout)itemView.findViewById(R.id.grossingContainerRL);
+            container = itemView;
         }
     }
 
