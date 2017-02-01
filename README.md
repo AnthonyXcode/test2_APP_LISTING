@@ -1,10 +1,8 @@
 # test2_APP_LISTING
 
-![](http://i.giphy.com/l0ExgYC7VAPq036ak.gif)
-
 1. Add permission at manifests to access internet
    android:name="android.permission.INTERNET"
-   
+
 2. Add picasso to help loading image and volley to get API data at build gradle in app level
 
    compile 'com.squareup.picasso:picasso:2.5.2'
@@ -15,6 +13,7 @@
 5. Use RecyclerView to make more comstomied thing.
 
 ![](http://i.giphy.com/26gssW7z21eqZ1Uzu.gif)
+
 6. The fellowing method help to do research action:
 
    private void searchApp(final String appName){
