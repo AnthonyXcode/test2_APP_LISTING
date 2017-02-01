@@ -3,7 +3,7 @@
 ![](http://i.giphy.com/l0ExgYC7VAPq036ak.gif)
 
 1. Add permission at manifests to access internet
-   <uses-permission android:name="android.permission.INTERNET" />
+   android:name="android.permission.INTERNET"
    
 2. Add picasso to help loading image and volley to get API data at build gradle in app level
 
