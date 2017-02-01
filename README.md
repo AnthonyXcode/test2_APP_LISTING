@@ -18,7 +18,8 @@
 
 6. The fellowing method help to do research action:
 
-   private void searchApp(final String appName){
+    
+    private void searchApp(final String appName){
         ArrayList<ListingItem> preparedGrossingItems = new ArrayList<>();
         for (ListingItem item: grossingItems){
             if (item.getName().toLowerCase().contains(appName.toLowerCase())){
@@ -26,7 +27,6 @@
             }
         }
         adapter.updateGrossingForSearch(preparedGrossingItems);
-
         ArrayList<ListingItem> prepared100Items = new ArrayList<>();
         for (ListingItem item:top100Items){
             if (item.getName().toLowerCase().contains(appName.toLowerCase())){
@@ -36,3 +36,5 @@
         adapter.updateTop00ForSearch(prepared100Items);
 
     }
+    
+P.S: APK inside ./app
